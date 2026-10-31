@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Піцерія{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'menu/css/style.css' %}">
+</head>
+<body>
+<div class="frame">
+    <nav class="nav">
+        <a href="{% url 'menu:home' %}" class="logo" title="Наполі">
+            <svg width="58" height="58" viewBox="0 0 58 58" aria-hidden="true">
+                <circle cx="29" cy="29" r="26" fill="#2b4a78" stroke="#fff" stroke-width="5"/>
+                <path d="M19 34a10 10 0 0 1 20 0" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+            </svg>
+        </a>
+
+        <div class="nav-links">
+            <a href="{% url 'menu:home' %}">Головна</a>
+            <a href="{% url 'menu:menu_list' %}">Меню</a>
+        </div>
+
+        <div class="nav-right">
+            {% if user.is_authenticated %}
+                <span class="pill">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <circle cx="12" cy="8" r="4.5"/><path d="M3 21c0-4.5 4-7.5 9-7.5s9 3 9 7.5z"/>
+                    </svg>
+                    {{ user.username }}
+                </span>
+                <form method="post" action="{% url 'accounts:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="icon-btn" title="Вийти">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"/><path d="M10 17l-5-5 5-5"/><path d="M5 12h11"/>
+                        </svg>
+                    </button>
+                </form>
+            {% else %}
+                <a href="{% url 'accounts:login' %}" class="pill">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <circle cx="12" cy="8" r="4.5"/><path d="M3 21c0-4.5 4-7.5 9-7.5s9 3 9 7.5z"/>
+                    </svg>
+                    Увійти
+                </a>
+                <a href="{% url 'accounts:register' %}" class="icon-btn" title="Реєстрація">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <circle cx="10" cy="8" r="4.5"/><path d="M1 21c0-4.5 4-7.5 9-7.5 1.6 0 3 .3 4.3.9A6 6 0 0 0 13 21z"/>
+                        <path d="M19 14v3h3v2h-3v3h-2v-3h-3v-2h3v-3z"/>
+                    </svg>
+                </a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main class="content">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert glass {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+</div>
+</body>
+</html>

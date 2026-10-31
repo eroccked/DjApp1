@@ -1,0 +1,22 @@
+{% extends "menu/base.html" %}
+
+{% block title %}Вхід{% endblock %}
+
+{% block content %}
+    <div class="centered">
+        <section class="glass panel">
+            <h1 class="panel-title">Вхід</h1>
+            <p class="panel-sub">Ще не маєте акаунта? <a href="{% url 'accounts:register' %}">Реєстрація</a></p>
+
+            <form method="post" class="form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="hidden" name="next" value="{{ next }}">
+                <button type="submit" class="btn btn-block">Увійти</button>
+            </form>
+
+            <div class="divider">або</div>
+            <a href="{% url 'menu:menu_list' %}" class="btn btn-ghost btn-block" style="font-size: 1.05rem">Переглянути меню</a>
+        </section>
+    </div>
+{% endblock %}

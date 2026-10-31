@@ -1,0 +1,18 @@
+{% extends "menu/base.html" %}
+
+{% block title %}Головна{% endblock %}
+
+{% block content %}
+    <div class="centered">
+        <section class="glass hero">
+            <h1>🍕 Ласкаво просимо до піцерії «Наполі»</h1>
+            <p>Справжня італійська кухня просто в Івано-Франківську.</p>
+            <div class="actions">
+                <a href="{% url 'menu:menu_list' %}" class="btn">Переглянути меню →</a>
+                {% if not user.is_authenticated %}
+                    <a href="{% url 'accounts:register' %}" class="btn btn-ghost">Реєстрація</a>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+{% endblock %}

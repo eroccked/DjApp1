@@ -1,0 +1,560 @@
+:root {
+    --text: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.75);
+    --glass-bg: rgba(40, 55, 100, 0.28);
+    --glass-border: rgba(255, 255, 255, 0.35);
+    --accent: #5b8cff;
+    --accent-hover: #4a7af0;
+    --link: #7fb0ff;
+    --danger: #e5484d;
+    --danger-hover: #cc3a3f;
+    --success: #46c28e;
+    --radius: 18px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 32px 16px;
+    font-family: "Barlow", Arial, sans-serif;
+    color: var(--text);
+    background: linear-gradient(90deg, #1d2450 50%, #4f5a61 50%);
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1, h2, h3 {
+    margin: 0 0 12px;
+    font-weight: 700;
+}
+
+/* ---------- Рамка з пейзажем ---------- */
+
+.frame {
+    max-width: 1200px;
+    min-height: calc(100vh - 64px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid rgba(200, 215, 255, 0.7);
+    border-radius: 28px;
+    overflow: hidden;
+    background: #26446f url("../img/scene.svg") center bottom / cover no-repeat;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- Навігація ---------- */
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 36px;
+}
+
+.logo {
+    flex-shrink: 0;
+    display: block;
+    line-height: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: clamp(20px, 6vw, 80px);
+    margin: 0 auto;
+}
+
+.nav-links a {
+    color: var(--text);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.nav-right form {
+    margin: 0;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 22px;
+    border: 2.5px solid #fff;
+    border-radius: 10px;
+    background: transparent;
+    color: #fff;
+    font: 500 1rem "Barlow", Arial, sans-serif;
+    cursor: pointer;
+}
+
+a.pill:hover {
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.icon-btn {
+    display: inline-flex;
+    padding: 4px;
+    border: none;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    line-height: 0;
+}
+
+.icon-btn:hover {
+    opacity: 0.8;
+}
+
+/* ---------- Контент ---------- */
+
+.content {
+    flex: 1;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 24px 56px;
+    display: flex;
+    flex-direction: column;
+}
+
+.centered {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.page-head h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- Скляна картка ---------- */
+
+.glass {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04)), var(--glass-bg);
+    border: 1.5px solid var(--glass-border);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 32px rgba(15, 25, 60, 0.35);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.panel {
+    width: 100%;
+    max-width: 380px;
+    padding: 36px 32px 30px;
+}
+
+.panel-wide {
+    max-width: 560px;
+}
+
+.panel-title {
+    text-align: center;
+    font-size: 2.1rem;
+    margin-bottom: 8px;
+}
+
+.panel-sub {
+    text-align: center;
+    margin: 0 0 24px;
+    font-weight: 500;
+}
+
+/* ---------- Сітка меню ---------- */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.dish-card {
+    display: flex;
+    flex-direction: column;
+    padding: 22px 22px 18px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dish-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(15, 25, 60, 0.45);
+}
+
+.dish-card h3 {
+    font-size: 1.35rem;
+    margin: 10px 0 8px;
+}
+
+.dish-card h3 a {
+    color: #fff;
+}
+
+.dish-card p {
+    flex: 1;
+    margin: 0 0 16px;
+    color: var(--text-muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.dish-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.chip {
+    align-self: flex-start;
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffd27a;
+}
+
+.price-lg {
+    font-size: 2rem;
+}
+
+.muted {
+    color: var(--text-muted);
+}
+
+.empty {
+    padding: 40px;
+    text-align: center;
+}
+
+/* ---------- Деталі страви ---------- */
+
+.detail h1 {
+    font-size: 2.4rem;
+    margin: 14px 0 12px;
+}
+
+.detail-desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.detail-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #fff;
+    font-weight: 500;
+}
+
+/* ---------- Кнопки ---------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 22px;
+    border: 1.5px solid transparent;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    font: 600 1.05rem "Barlow", Arial, sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: var(--accent-hover);
+    text-decoration: none;
+}
+
+.btn-block {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.3rem;
+}
+
+.btn-ghost {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.btn-danger {
+    background: var(--danger);
+}
+
+.btn-danger:hover {
+    background: var(--danger-hover);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 18px 0 14px;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1.5px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.form-actions .btn {
+    flex: 1;
+}
+
+/* ---------- Форми (form.as_p) ---------- */
+
+.form p {
+    margin: 0 0 22px;
+}
+
+.form label {
+    display: block;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.form input[type="text"],
+.form input[type="password"],
+.form input[type="email"],
+.form input[type="number"],
+.form select {
+    width: 100%;
+    padding: 6px 2px;
+    border: none;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.85);
+    border-radius: 0;
+    background: transparent;
+    color: #fff;
+    font: 1.05rem "Barlow", Arial, sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form textarea {
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px 12px;
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font: 1rem "Barlow", Arial, sans-serif;
+    resize: vertical;
+    outline: none;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+    border-color: var(--link);
+}
+
+.form select option {
+    background: #2b3a66;
+    color: #fff;
+}
+
+.form p:has(input[type="checkbox"]) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+}
+
+.form .helptext {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.form .helptext ul {
+    margin: 4px 0 0;
+    padding-left: 18px;
+}
+
+.errorlist {
+    list-style: none;
+    margin: 0 0 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: rgba(229, 72, 77, 0.25);
+    border: 1px solid rgba(255, 140, 140, 0.6);
+    color: #ffe1e1;
+    font-size: 0.9rem;
+}
+
+/* ---------- Повідомлення ---------- */
+
+.messages {
+    max-width: 560px;
+    margin: 0 auto 20px;
+}
+
+.alert {
+    padding: 12px 18px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--success);
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.alert-error {
+    border-left-color: var(--danger);
+}
+
+.alert-warning {
+    border-left-color: #f5b94a;
+}
+
+.alert-info {
+    border-left-color: var(--link);
+}
+
+/* ---------- Головна ---------- */
+
+.hero {
+    max-width: 560px;
+    padding: 44px 40px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.4rem;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.15rem;
+    margin: 0 0 28px;
+}
+
+.hero .actions {
+    justify-content: center;
+}
+
+/* ---------- Мобільні ---------- */
+
+@media (max-width: 720px) {
+    body {
+        padding: 12px 8px;
+    }
+
+    .frame {
+        min-height: calc(100vh - 24px);
+        border-radius: 20px;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+        padding: 18px 16px;
+        gap: 14px;
+    }
+
+    .nav-right {
+        margin-left: auto;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 28px;
+    }
+
+    .content {
+        padding: 16px 16px 40px;
+    }
+
+    .panel,
+    .hero {
+        padding: 28px 22px;
+    }
+
+    .hero h1,
+    .detail h1 {
+        font-size: 1.9rem;
+    }
+}

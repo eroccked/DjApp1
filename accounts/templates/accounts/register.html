@@ -1,0 +1,21 @@
+{% extends "menu/base.html" %}
+
+{% block title %}Реєстрація{% endblock %}
+
+{% block content %}
+    <div class="centered">
+        <section class="glass panel">
+            <h1 class="panel-title">Реєстрація</h1>
+            <p class="panel-sub">Вже маєте акаунт? <a href="{% url 'accounts:login' %}">Увійти</a></p>
+
+            <form method="post" class="form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-block">Зареєструватися</button>
+            </form>
+
+            <div class="divider">або</div>
+            <a href="{% url 'menu:menu_list' %}" class="btn btn-ghost btn-block" style="font-size: 1.05rem">Переглянути меню</a>
+        </section>
+    </div>
+{% endblock %}

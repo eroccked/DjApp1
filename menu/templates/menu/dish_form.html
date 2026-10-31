@@ -1,0 +1,21 @@
+{% extends "menu/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="centered">
+        <section class="glass panel panel-wide">
+            <h1 class="panel-title">{{ title }}</h1>
+            <p class="panel-sub muted">Заповніть інформацію про страву</p>
+
+            <form method="post" class="form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="form-actions">
+                    <button type="submit" class="btn">Зберегти</button>
+                    <a href="{% url 'menu:menu_list' %}" class="btn btn-ghost">Скасувати</a>
+                </div>
+            </form>
+        </section>
+    </div>
+{% endblock %}

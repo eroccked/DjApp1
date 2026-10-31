@@ -1,0 +1,23 @@
+{% extends "menu/base.html" %}
+
+{% block title %}Видалення{% endblock %}
+
+{% block content %}
+    <div class="centered">
+        <section class="glass panel" style="text-align: center">
+            <h1 class="panel-title">Видалити страву?</h1>
+            <p class="panel-sub">
+                Ви впевнені, що хочете видалити «<strong>{{ dish.name }}</strong>»?<br>
+                <span class="muted">Цю дію неможливо скасувати.</span>
+            </p>
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-danger">Так, видалити</button>
+                    <a href="{% url 'menu:dish_detail' dish.id %}" class="btn btn-ghost">Скасувати</a>
+                </div>
+            </form>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "menu/base.html" %}
+
+{% block title %}{{ dish.name }}{% endblock %}
+
+{% block content %}
+    <div class="centered">
+        <article class="glass panel panel-wide detail">
+            <span class="chip">{{ dish.category.name }}</span>
+            <h1>{{ dish.name }}</h1>
+            <p class="detail-desc">{{ dish.description }}</p>
+
+            <div class="detail-footer">
+                <span class="price price-lg">{{ dish.price|floatformat:0 }} грн</span>
+                {% if user.is_staff %}
+                    <div class="actions">
+                        <a href="{% url 'menu:dish_update' dish.id %}" class="btn btn-ghost">Редагувати</a>
+                        <a href="{% url 'menu:dish_delete' dish.id %}" class="btn btn-danger">Видалити</a>
+                    </div>
+                {% endif %}
+            </div>
+        </article>
+
+        <a href="{% url 'menu:menu_list' %}" class="back-link">← Назад до меню</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "menu/base.html" %}
+
+{% block title %}Меню{% endblock %}
+
+{% block content %}
+    <div class="page-head">
+        <h1>Наше меню</h1>
+        {% if user.is_staff %}
+            <a href="{% url 'menu:dish_create' %}" class="btn">+ Додати страву</a>
+        {% endif %}
+    </div>
+
+    <div class="grid">
+        {% for dish in dishes %}
+            <article class="glass dish-card">
+                <span class="chip">{{ dish.category.name }}</span>
+                <h3><a href="{% url 'menu:dish_detail' dish.id %}">{{ dish.name }}</a></h3>
+                <p>{{ dish.description }}</p>
+                <div class="dish-card-footer">
+                    <span class="price">{{ dish.price|floatformat:0 }} грн</span>
+                    <a href="{% url 'menu:dish_detail' dish.id %}">Детальніше →</a>
+                </div>
+            </article>
+        {% empty %}
+            <div class="glass empty">Меню поки порожнє.</div>
+        {% endfor %}
+    </div>
+{% endblock %}
